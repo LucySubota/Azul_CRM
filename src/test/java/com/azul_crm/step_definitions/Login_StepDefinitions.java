@@ -18,10 +18,6 @@ public class Login_StepDefinitions {
         Driver.getDriver().get(ConfigurationReader.getProperty("loginPageURL"));
     }
 
-    @When("user enters valid {string} credentials")
-    public void user_enters_valid_credentials(String userType) {
-        loginPage.login(userType);
-    }
 
     @Then("user should see home page")
     public void user_should_see_home_page() {
@@ -39,6 +35,43 @@ public class Login_StepDefinitions {
         Assert.assertEquals(loginPage.incorrectUsernameOrPasswordMessage.getText(), ("Incorrect username or password"));
         // Bug:          Incorrect login or password
         // instead of:   Incorrect username or password
+    }
+
+
+    @When("user enters valid credentials as {string}")
+    public void user_enters_valid_credentials_as(String userType) {
+        loginPage.login(userType);
+    }
+
+    @When("user enters valid {string}")
+    public void user_enters_valid(String input) {
+        if(input.equals("username")){
+            loginPage.usernameInputBox.sendKeys(ConfigurationReader.getProperty("hr_username"));
+        }else{
+            loginPage.passwordInputBox.sendKeys(ConfigurationReader.getProperty("hr_password"));
+        }
+    }
+    @When("user clicks Log In button")
+    public void user_clicks_log_in_button() {
+        loginPage.loginButton.click();
+    }
+    @Then("user sees {string} pop up")
+    public void user_sees_pop_up(String popUp) {
+        Assert.assertTrue(loginPage.pleaseFillOutThisFieldPopUp.isDisplayed());
+    }
+
+    @Then("user can see and click Remember me on this computer checkbox")
+    public void user_can_see_and_click_remember_me_on_this_computer_checkbox() {
+        Assert.assertTrue(loginPage.rememberMeCheckbox.isEnabled() && loginPage.rememberMeText.isDisplayed());
+    }
+
+    @When("user enters password")
+    public void user_enters_password() {
+        loginPage.passwordInputBox.sendKeys(ConfigurationReader.getProperty("hr_password"));
+    }
+    @Then("user sees it being in bullet signs")
+    public void user_sees_it_being_in_bullet_signs() {
+        Assert.assertEquals(loginPage.passwordInputBox.getAttribute("type"), "password");
     }
 
 }
