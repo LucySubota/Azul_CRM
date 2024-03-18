@@ -48,15 +48,12 @@
     </dependency>
 
 
-
-
-
-<!--    &lt;!&ndash; https://mvnrepository.com/artifact/com.github.javafaker/javafaker &ndash;&gt;-->
-<!--    <dependency>-->
-<!--        <groupId>com.github.javafaker</groupId>-->
-<!--        <artifactId>javafaker</artifactId>-->
-<!--        <version>1.0.2</version>-->
-<!--    </dependency>-->
+    <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+    <dependency>
+        <groupId>com.github.javafaker</groupId>
+        <artifactId>javafaker</artifactId>
+        <version>1.0.2</version>
+    </dependency>
 
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
     <dependency>
