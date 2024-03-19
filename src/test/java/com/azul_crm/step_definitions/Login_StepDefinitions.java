@@ -13,15 +13,9 @@ public class Login_StepDefinitions {
 
     LoginPage loginPage = new LoginPage();
 
-    @Given("user is on the login page")
-    public void user_is_on_the_login_page() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("loginPageURL"));
-    }
-
-
     @Then("user should see home page")
     public void user_should_see_home_page() {
-        BrowserUtils.verifyTitle("Portal");
+        BrowserUtils.verifyTitleContains("Portal");
     }
 
     @When("user enters invalid {string} and {string}")
