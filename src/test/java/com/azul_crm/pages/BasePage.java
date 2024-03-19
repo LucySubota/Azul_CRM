@@ -22,6 +22,9 @@ public abstract class BasePage {
     @FindBy (linkText = "Log out")
     public WebElement logOutButton;
 
+    @FindBy(linkText = "My Profile")
+    public WebElement myProfile;
+
     public List<WebElement> getAccountNameDropdownOptions_as_WebElement(){
         List<WebElement> accountNameDropdownOptionsWithSpans = Driver.getDriver().findElements(By.xpath("//div[@class='menu-popup-items']/*/span"));
         List<WebElement> accountNameDropdownOptions = new ArrayList<>();
