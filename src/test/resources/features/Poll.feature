@@ -8,16 +8,16 @@ Feature: Default
   Scenario Outline: AC2_Verify that the user can create a poll by adding questions and multiple answers
     When "<user>" is on Portal home page
     And user clicks Poll button
-    Then user types "<message title>"
-    And user types "<question>"
-    And user types "<answer1>" and "<answer2>"
+    Then user types "message title" message
+    And user types "question"
+    And user types "answer1" and "answer2"
     Then user clicks Send button
-    And user sees the poll beeing posted
+    And user sees the poll being posted
     Examples:
-      | user      | message title        | question         | answer1    | answer2            |
-      | hr        | Hello, eveyone!      | How are you?     | Great!     | Doing OK           |
-      | help desk | Question of the day! | I am a...        | Cat Person | Dog Person         |
-      | marketing | Im curious           | Would you rather | Fly        | Breath under water |
+      | user      |
+      | hr        |
+      | help desk |
+      | marketing |
 
 	#US:
 	#
@@ -60,20 +60,21 @@ Feature: Default
     When "<user>" is on Portal home page
     And user clicks Poll button
     And user clicks Send button
-    Then user sees "The message title is not specified" message
+    Then user sees "<error1>" message
     Then user deletes All employees as recipients
     And user clicks Send button
-    Then user sees "Please specify at least one person." message
-    Then user types "<message title>"
-    And user types "<question>"
+    Then user sees "<error2>" message
+    Then user types "message" message
+    And user types "question"
     Then user clicks Send button
-    Then user sees "The question ""<question>"" has no answers." message
-    Then user enters "<answer1>" as first answer and "<answer2>" as second answer
+    Then user sees "The question "........." has no answers." error3 message
+    Then user erases question
+    And user types "answer1" and "answer2"
     And user clicks Send button
-    Then user sees "The question text is not specified." message
+    Then user sees "<error4>" message
 
     Examples:
-      | user      | message title        | question         | answer1    | answer2            |
-      | hr        | Hello, eveyone!      | How are you?     | Great!     | Doing OK           |
-      | help desk | Question of the day! | I am a...        | Cat Person | Dog Person         |
-      | marketing | Im curious           | Would you rather | Fly        | Breath under water |
+      | user      | error1                             | error2                              | error4                              |
+      | hr        | The message title is not specified | Please specify at least one person. | The question text is not specified. |
+      | help desk | The message title is not specified | Please specify at least one person. | The question text is not specified. |
+      | marketing | The message title is not specified | Please specify at least one person. | The question text is not specified. |
