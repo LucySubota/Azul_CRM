@@ -22,10 +22,9 @@ public class Logout_StepDefinitions {
     LoginPage loginPage = new LoginPage();
     PortalHomePage homePage = new PortalHomePage();
 
-    @Given("user is on Portal home page")
-    public void user_is_on_portal_home_page() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("loginPageURL"));
-        loginPage.login("marketing");
+    @When("{string} is on Portal home page")
+    public void is_on_portal_home_page(String userType) {
+        loginPage.login(userType);
     }
 
     @When("user clicks on profile name")
