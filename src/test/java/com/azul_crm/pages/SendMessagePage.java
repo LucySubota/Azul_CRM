@@ -31,7 +31,11 @@ public class SendMessagePage {
 
     public WebElement errorMessageB;
 
+    @FindBy (xpath = "//span[@data-id='UA']/span[1]")
+    public WebElement allEmployees;
 
+    @FindBy (xpath = "//button[@id='blog-submit-button-cancel']")
+    public WebElement cancelButton;
 
 
 }

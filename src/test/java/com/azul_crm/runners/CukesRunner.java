@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/azul_crm/step_definitions",
         dryRun = false,
-        tags = "@B32G18-226 or @MH",
+        tags = "@MH3",
         publish = true
 
 )

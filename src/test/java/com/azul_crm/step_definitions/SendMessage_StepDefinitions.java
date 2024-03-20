@@ -57,4 +57,23 @@ public class SendMessage_StepDefinitions {
         wait.until(ExpectedConditions.not(ExpectedConditions.stalenessOf(sendMessagePage.errorMessageB)));
         Assert.assertEquals(messageB, sendMessagePage.errorMessageB.getText());
     }
+
+
+    @Then("user see All employees by default")
+    public void userSeeAllEmployeesByDefault() {
+
+        sendMessagePage.allEmployees.isDisplayed();
+    }
+
+    @And("user see Cancel button")
+    public void userSeeCancelButton() {
+
+        sendMessagePage.cancelButton.isDisplayed();
+    }
+
+    @Then("user click Cancel button")
+    public void userClickCancelButton() {
+
+        sendMessagePage.cancelButton.click();
+    }
 }
