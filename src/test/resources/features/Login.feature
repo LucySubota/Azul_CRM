@@ -1,11 +1,6 @@
 @B32G18-228
 Feature: Default
 
-  Background:
-		#@B32G18-232
-    Given user is on the login page
-		
-
 	#*US_* As a user, I should be able to login
 	#
 	#*AC1_* Verify that the user can log in with valid credentials and land on the home page after successful login.
@@ -19,7 +14,6 @@ Feature: Default
       | hr        |
       | help desk |
       | marketing |
-      | htr       |
 
 	#{*}US_{*}As a user, I should be able to login
 	#
