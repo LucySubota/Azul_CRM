@@ -1,6 +1,6 @@
 package com.azul_crm.step_definitions;
 
-import com.azul_crm.pages.PortalHomePage;
+import com.azul_crm.pages.Home_ActivityStreamPage;
 import com.azul_crm.utilities.BrowserUtils;
 import com.azul_crm.utilities.Driver;
 import com.github.javafaker.Faker;
@@ -15,7 +15,7 @@ import java.time.Duration;
 
 public class Poll_StepDefinitions {
 
-    PortalHomePage homePage = new PortalHomePage();
+    Home_ActivityStreamPage homePage = new Home_ActivityStreamPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
     Faker faker = new Faker();
     String messageTitle;
