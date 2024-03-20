@@ -59,5 +59,26 @@ public class PortalHomePage extends BasePage{
         Driver.getDriver().switchTo().parentFrame();
     }
 
+// WebElements for Message functionality
 
+    @FindBy(xpath = "//span[.='Message']")
+    public WebElement messageLink;
+
+    @FindBy(xpath = "//span[@title='Link']")
+    public WebElement linkIcon;
+
+    @FindBy(xpath = "//input[@placeholder='Link text']")
+    public WebElement linkText;
+
+    @FindBy(xpath = "//input[@placeholder='Link URL']")
+    public WebElement linkURL;
+
+    @FindBy(xpath = "//input[@id='undefined']")
+    public WebElement saveButton ;
+
+    @FindBy(xpath = "//button[@id='blog-submit-button-save']")
+    public WebElement sendMessage;
+
+    @FindBy(xpath = "//div[@class='feed-post-text-block-inner-inner']/a")
+    public WebElement postedLinkText;
 }
