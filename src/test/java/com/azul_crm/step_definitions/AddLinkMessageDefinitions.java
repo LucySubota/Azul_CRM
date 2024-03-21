@@ -67,4 +67,5 @@ public class AddLinkMessageDefinitions {
 
         Assert.assertTrue(homePage.postedLinkText.getAttribute("target").equals("_blank"));
     }
+
 }

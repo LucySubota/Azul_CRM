@@ -2,6 +2,7 @@ package com.azul_crm.pages;
 
 import com.azul_crm.utilities.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -92,6 +93,24 @@ public class Home_ActivityStreamPage extends BasePage{
         Driver.getDriver().switchTo().parentFrame();
     }
 
+    public boolean isThereFileInMessageInputBox(String fileName){
+        Driver.getDriver().switchTo().frame(messageInputIframe);
+        if(fileName.endsWith(".jpeg") || fileName.endsWith(".png")) {
+            try {
+                Driver.getDriver().findElement(By.tagName("img"));
+                Driver.getDriver().switchTo().parentFrame();
+                return true;
+            } catch (NoSuchElementException e) {}
+            return false;
+        }else{
+            try {
+                return Driver.getDriver().findElement(By.xpath("//span[.='"+fileName+"']")).isDisplayed();
+
+            } catch (NoSuchElementException e) {}
+            return false;
+        }
+    }
+
 // WebElements for Message functionality
 
     @FindBy(xpath = "//span[.='Message']")
@@ -114,4 +133,26 @@ public class Home_ActivityStreamPage extends BasePage{
 
     @FindBy(xpath = "//div[@class='feed-post-text-block-inner-inner']/a")
     public WebElement postedLinkText;
+
+// WebElements for uploading file in Message functionality
+
+    @FindBy(css = "#feed-add-post-form-tab-message")
+    public WebElement messageButton;
+
+    @FindBy(css = "#bx-b-uploadfile-blogPostForm")
+    public WebElement uploadFileButton;
+
+    @FindBy(xpath = "(//input[@class='diskuf-fileUploader wd-test-file-light-inp '])[1]")
+    public WebElement uploadFilesAndImagesButton;
+
+    @FindBy(xpath = "//table[@class='files-list']/tbody//span[@title='Click to insert file']")
+    public WebElement firstUploadedFile;
+
+    @FindBy(xpath = "//tr[contains(@id, 'disk-edit-attach')]/td[4]")
+    public WebElement insertInTextButton;
+
+    @FindBy(xpath = "//td[@class='files-del-btn']")
+    public WebElement deleteUploadedFileIcon;
+
+
 }
