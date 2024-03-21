@@ -1,26 +1,18 @@
 package com.azul_crm.step_definitions;
 
 import com.azul_crm.pages.LoginPage;
-import com.azul_crm.pages.PortalHomePage;
+import com.azul_crm.pages.Home_ActivityStreamPage;
 import com.azul_crm.utilities.BrowserUtils;
-import com.azul_crm.utilities.ConfigurationReader;
-import com.azul_crm.utilities.Driver;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Logout_StepDefinitions {
 
     LoginPage loginPage = new LoginPage();
-    PortalHomePage homePage = new PortalHomePage();
+    Home_ActivityStreamPage homePage = new Home_ActivityStreamPage();
 
     @When("{string} is on Portal home page")
     public void is_on_portal_home_page(String userType) {

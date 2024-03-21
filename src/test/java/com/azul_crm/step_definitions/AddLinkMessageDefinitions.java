@@ -1,6 +1,6 @@
 package com.azul_crm.step_definitions;
 
-import com.azul_crm.pages.PortalHomePage;
+import com.azul_crm.pages.Home_ActivityStreamPage;
 import com.azul_crm.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -8,7 +8,7 @@ import org.junit.Assert;
 
 public class AddLinkMessageDefinitions {
 
-    PortalHomePage homePage = new PortalHomePage();
+    Home_ActivityStreamPage homePage = new Home_ActivityStreamPage();
     String msgText = "INOX";
     String msgLink = "https://www.google.com/";
 

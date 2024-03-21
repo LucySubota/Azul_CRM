@@ -9,23 +9,58 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class PortalHomePage extends BasePage{
+public class Home_ActivityStreamPage extends BasePage{
 
-    public PortalHomePage(){
+    public Home_ActivityStreamPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
+    // Left Side Menu Buttons
+
+    @FindBy (xpath = "//a[@title='Activity Stream']")
+    public WebElement activityStreamMenuButton;
+
+    @FindBy (xpath = "//a[@title='Tasks']")
+    public WebElement tasksMenuButton;
+
+    @FindBy (xpath = "//a[@title='Chat and Calls']")
+    public WebElement chatAndCallsMenuButton;
+
+    @FindBy (xpath = "//a[@title='Workgroups']")
+    public WebElement workgroupsMenuButton;
+
+    @FindBy (xpath = "//a[@title='Drive']")
+    public WebElement driveMenuButton;
+
+    @FindBy (xpath = "//a[@title='Calendar']")
+    public WebElement calendarMenuButton;
+
+    @FindBy (xpath = "//a[@title='Mail']")
+    public WebElement mailMenuButton;
+
+    @FindBy (xpath = "//a[@title='Contact Center']")
+    public WebElement contactCenterMenuButton;
+
+    @FindBy (xpath = "//a[@title='Time and Reports']")
+    public WebElement timeAndReportsMenuButton;
+
+    @FindBy (xpath = "//a[@title='Services']")
+    public WebElement servicesMenuButton;
+
+    @FindBy (xpath = "//a[@title='Employees']")
+    public WebElement employeesMenuButton;
+
+    @FindBy (xpath = "//a[@title='Company']")
+    public WebElement companyMenuButton;
+
+
+    // WebElements and Methods for Poll functionality
 
     @FindBy (css = "#feed-add-post-form-tab-vote")
     public WebElement pollButton;
 
     @FindBy (css = "#question_0")
     public WebElement questionOneInput;
-
-//    @FindBy (css = "#answer_0__0_")
-//    public WebElement answerOneInput;
-//
-//    @FindBy (css = "answer_0__1_")
-//    public WebElement answerTwoInput;
 
     @FindAll({@FindBy (xpath = "(//ol[@class='vote-answers']/li)/input[1]")})
     public List<WebElement> answersInputs;
@@ -42,10 +77,8 @@ public class PortalHomePage extends BasePage{
     @FindBy (css = "#multi_0")
     public WebElement allowMultipleChoiceCheckbox;
 
-
     @FindBy (xpath = "//div[@id='feed-add-post-form-notice-blockblogPostForm']/div/span[2]")
     public WebElement errorMessagePopUp;
-
 
     @FindBy (css = ".feed-add-post-del-but")
     public WebElement deleteAllEmployeesAsRecipientsButton;
