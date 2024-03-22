@@ -19,75 +19,46 @@ public class UploadToMessage_StepDef {
     LoginPage loginPage = new LoginPage();
     MessagePage messagePage = new MessagePage();
 
-    WebDriverWait wait=new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
+    WebDriverWait wait=new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
 
     String path = ConfigurationReader.getProperty("file");
+
+
     @Given("{string} user is on Portal home page")
     public void user_is_on_portal_home_page(String userType) {
-
+        Driver.getDriver().get(ConfigurationReader.getProperty("loginPageURL"));
             loginPage.login(userType);
         }
 
-    @When("user click to Message button")
-    public void user_click_to_message_button() {
+
+    @When("user clicks to Message button")
+    public void userClicksToMessageButton() {
         messagePage.message_btn.click();
     }
-    @When("user click to Upload files icon")
-    public void user_click_to_upload_files_icon() {
+
+    @When("user click to Upload file icon")
+    public void userClickToUploadFileIcon() {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@id='post-buttons-bottom'])[1]//span[@id='bx-b-uploadfile-blogPostForm']")));
         messagePage.uploadFiles_icon.click();
     }
 
-    @Then("user should be able to upload file")
-    public void user_should_be_able_to_upload_file() {
-        messagePage.uploadFilesAndImgBtn.sendKeys(path);
+    @Then("user should be able to upload {string}")
+    public void userShouldBeAbleToUpload(String fileName) {
+        messagePage.sendFile(fileName);
     }
 
+    @Then("verify that the user can insert the {string}  into text after clicking on Insert In Text button")
+    public void verifyThatTheUserCanInsertTheIntoTextAfterClickingOnInsertInTextButton(String fileType) {
 
-    @Then("verify that the user can insert the file into text after clicking on Insert In Text button")
-    public void verify_that_the_user_can_insert_the_file_into_text_after_clicking_on_insert_in_text_button() {
-
-
-        messagePage.insertInText_btn.click();
-        Driver.getDriver().switchTo().frame(messagePage.iframe);
-        String[] arr = path.split("/");
-        String lastElement = arr[arr.length - 1];
-        wait.until(ExpectedConditions.visibilityOf(messagePage.messageInputBox));
-        String actualElement = messagePage.messageInputBox.getText();
-
-        Assert.assertTrue("Text of file doesn't exist", actualElement.contains(lastElement));
-
-        Driver.getDriver().switchTo().parentFrame();
+        messagePage.insertInText(fileType);
     }
 
-
-    @Then("verify that the user can remove file at any time before sending")
-    public void verify_that_the_user_can_remove_file_at_any_time_before_sending() {
-        try {
-            messagePage.delete_uploaded_files.click();
-
-        } catch (org.openqa.selenium.StaleElementReferenceException e) {
-            Driver.getDriver().navigate().refresh();
-            wait.until(ExpectedConditions.visibilityOf(messagePage.message_btn));
-            messagePage.mainSteps();
-            messagePage.delete_uploaded_files.click();
-            e.printStackTrace();
-
-        }
-
-
-
-        try {
-            Assert.assertFalse(messagePage.emptyTable.isDisplayed());
-
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            e.printStackTrace();
-            System.out.println("NOT displayed");
-        }
+    @Then("verify that the user can remove  {string} at any time before sending")
+    public void verifyThatTheUserCanRemoveAtAnyTimeBeforeSending(String fileType) {
+        messagePage.removingVerify(fileType);
     }
 
-
-    }
+}
 
 
 
