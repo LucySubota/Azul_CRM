@@ -2,19 +2,13 @@ package com.azul_crm.step_definitions;
 
 import com.azul_crm.pages.LoginPage;
 import com.azul_crm.pages.CompanyPage;
-import com.azul_crm.pages.MyProfilePage;
 import com.azul_crm.utilities.ConfigurationReader;
 import com.azul_crm.utilities.Driver;
-import com.azul_crm.utilities.BrowserUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CompanyPageDefinitions {
