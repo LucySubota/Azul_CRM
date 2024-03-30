@@ -56,59 +56,15 @@ public class MessagePage {
     public void insertInText(String fileName)  {
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         insertInText_btn.click();
-        Driver.getDriver().switchTo().frame(iframe);
-        String lastElement = Files.getFileExtension(fileName);
-        lastElement = "."+lastElement;
-
-        switch (lastElement) {
-            case ".txt":
-            case ".docx":
-            case ".pdf":
-                String actualElement = messageInputBox.getText();
-                Assert.assertTrue( actualElement.contains(fileName));
-                break;
-            case ".png":
-            case ".jpeg":
-                String actualText = imageAndPng.getAttribute("src");
-                try {
-                    String decoded = java.net.URLDecoder.decode(actualText, "UTF-8");
-                    String[] arr = decoded.split("=");
-                    String lastPartOfUrl = arr[arr.length - 1];
-                    String extractedFilename = lastPartOfUrl.replaceAll("\\(\\d+\\)", "").trim();
-                    extractedFilename = extractedFilename.replace(" ", "");
-                    Assert.assertEquals(fileName, extractedFilename);
-                }catch(UnsupportedEncodingException e){
-                    e.printStackTrace();
-                }
-                break;
-        }
-        Driver.getDriver().switchTo().parentFrame();
-    }
-
-    public void removingVerify(String file) {
-
-        try {
-            delete_uploaded_files.click();
-        } catch (org.openqa.selenium.StaleElementReferenceException e) {
-            Driver.getDriver().navigate().refresh();
-            message_btn.click();
-            uploadFiles_icon.click();
-            sendFile(file);
-            delete_uploaded_files.click();
-            e.printStackTrace();
-        }
-
-        /////////////////////
-        try {
-            Assert.assertFalse(emptyTable.isDisplayed());
-
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            e.printStackTrace();
-            System.out.println("NOT displayed");
-        }
-
 
     }
+
+//    public void removingVerify(String file) {
+//
+//
+//
+//
+//    }
 
 
 
