@@ -1,4 +1,5 @@
 @B32G18-235
+	@smoke
 Feature: Default
 
 	#*US_* As a user, I should be able to log out

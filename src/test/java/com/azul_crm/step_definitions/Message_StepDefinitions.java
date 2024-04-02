@@ -24,15 +24,18 @@ public class Message_StepDefinitions {
     public void user_clicks_message_button() {
         homePage.messageButton.click();
     }
+
     @When("user clicks Upload File button")
     public void user_clicks_upload_file_button() {
         homePage.uploadFileButton.click();
     }
+
     @When("user clicks Upload files and images button and chooses {string} to upload")
     public void user_clicks_upload_files_and_images_button_and_chooses_to_upload(String filePath) {
         String path = new File(filePath).getAbsolutePath();
         homePage.uploadFilesAndImagesButton.sendKeys(path);
     }
+
     @Then("user sees file with {string} has being uploaded")
     public void user_sees_file_with_has_being_uploaded(String fileName) {
         Assert.assertTrue(homePage.firstUploadedFile.getText().contains(fileName));

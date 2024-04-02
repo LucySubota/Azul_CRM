@@ -1,4 +1,5 @@
 @B32G18-228
+  @smoke
 Feature: Default
 
 	#*US_* As a user, I should be able to login
